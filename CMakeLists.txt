@@ -10,10 +10,15 @@ project (fsm
 		LANGUAGES CXX
 		VERSION ${LIBRARY_VERSION})
 
+include(CheckCXXCompilerFlag)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(cmake/dependencies.cmake)
+
+# enable testing
+enable_testing()
 
 add_library(${LIBRARY_NAME} INTERFACE)
 target_sources(${LIBRARY_NAME} INTERFACE "include/fsm.h")
