@@ -49,6 +49,18 @@ TEST(FSM, TransitionWrongInputNoFallback)
     EXPECT_EQ(m.GetState(), 'a');
 }
 
+TEST(FSM, UpperCaseState)
+{
+    fsm::fsm m;
+    m.AddState('a');
+    m.AddState('b');
+    m.AddTransition('a', 'b', "input1", {});
+
+    m.ResetMachine('A');
+    m.Step("input");
+    EXPECT_EQ(m.GetState(), 'a');
+}
+
 TEST(FSM, ResetStateOnce)
 {
     fsm::fsm m;

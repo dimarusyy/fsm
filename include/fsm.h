@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <functional>
 #include <optional>
+#include <cctype>
 
 namespace fsm
 {
@@ -49,7 +50,7 @@ namespace fsm
         {
             // don't change state if not enabled
             if(at(state).enabled)
-                _current_state = state;
+                _current_state = std::tolower(state);
         }
 
         void Step(std::string input)
@@ -79,7 +80,7 @@ namespace fsm
     protected:
         transition_t& at(char state)
         {
-            return _states[state - 'a'];
+            return _states[std::tolower(state) - 'a'];
         }
 
     private:

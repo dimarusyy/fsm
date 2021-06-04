@@ -22,3 +22,7 @@ Following is an example usage of the FSM class instance.
     fsm.Step("input2");
     assert(fsm.GetState() == 'c');
 ```
+
+#### Comments
+The implementation supports only lower-case states of char type. 
+Thus, I have limited with 26-elements std::array<> to speed-up lookup.
